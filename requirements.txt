@@ -1,8 +1,10 @@
-Flask==3.0.0
-Flask-Cors==4.0.0
+webdriver-manager==4.0.2
+beautifulsoup4==4.12.3
+Flask==3.0.3
+Flask-Cors==5.0.0
+Flask-PyMongo==2.3.0
+html5lib==1.1
+playwright==1.49.1
+pymongo==4.10.1
+selenium==4.26.1
 requests==2.31.0
-beautifulsoup4==4.12.2
-pymongo
-selenium
-schedule
-webdriver_manager

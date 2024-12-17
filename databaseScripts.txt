@@ -1,0 +1,88 @@
+// Importar MongoClient desde el paquete mongodb
+import { MongoClient } from 'mongodb';
+
+// URL de conexión a MongoDB
+const url = 'mongodb://127.0.0.1:27017'; // Cambia esto si es necesario
+const dbName = 'CIDB'; // Nombre de tu base de datos
+
+async function run() {
+    // Crear un nuevo cliente MongoClient
+    const client = new MongoClient(url);
+
+    try {
+        // Conectar al cliente
+        await client.connect();
+        console.log('Conectado a MongoDB');
+
+        // Seleccionar la base de datos
+        const db = client.db(dbName);
+        
+        // Crear o seleccionar la colección
+        const collection = db.collection('productos');
+
+        // Ejemplo de documento a insertar
+        const exampleProduct = {
+            productId: "6265015",
+            displayName: "Cama Europea Super Prem 2 Plazas + 2 Almohadas CIC",
+            brand: "CIC",
+            rating: 4.1,
+            totalReviews: 636,
+            prices: [
+                { originalPrice: "449.990", symbol: "$ ", type: 1, crossed: false },
+                { originalPrice: "489.990", symbol: "$ ", type: 3, crossed: false }
+            ],
+            url: "https://www.falabella.com/falabella-cl/product/6265015/Cama-Europea-Super-Prem-2-Plazas-+-2-Almohadas-CIC/6265015",
+            topSpecifications: [
+                "Nivel de firmeza: Intermedio",
+                "Ancho: 150 cm",
+                "Largo: 200 cm"
+            ]
+        };
+
+        // Insertar el documento en la colección
+        const result = await collection.insertOne(exampleProduct);
+        console.log(`Documento insertado con el _id: ${result.insertedId}`);
+
+    } catch (error) {
+        console.error('Error al conectar a MongoDB:', error);
+    } finally {
+        // Cerrar la conexión
+        await client.close();
+    }
+}
+
+// Ejecutar la función
+run().catch(console.error);
+
+
+
+
+import { MongoClient } from 'mongodb';
+
+const url = 'mongodb://127.0.0.1:27017'; // URL de conexión
+const dbName = 'CIDB'; // Nombre de tu base de datos
+
+async function fetchProducts() {
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        console.log('Conectado a MongoDB');
+
+        const db = client.db(dbName);
+        const collection = db.collection('productos');
+
+        // Recuperar todos los documentos en la colección
+        const products = await collection.find({}).toArray();
+        console.log('Productos:', products);
+
+    } catch (error) {
+        console.error('Error al conectar a MongoDB:', error);
+    } finally {
+        await client.close();
+    }
+}
+
+// Ejecutar la función
+fetchProducts().catch(console.error);
+

@@ -122,12 +122,29 @@
         </div>
     </div>
 
-    <!-- Contenedor principal para los productos -->
+    <!-- Contenido principal - Grid de productos -->
     <div class="main-content">
-        <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" id="productos-container">
-                <!-- Los productos se cargarán dinámicamente aquí -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Ejemplo de tarjeta de producto (repetir según necesidad) -->
+            <div class="col">
+                <div class="card product-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/300/300" class="card-img-top product-img" alt="Producto">
+                        <span class="store-badge">Tienda 1</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre del Producto</h5>
+                        <p class="card-text text-muted">Breve descripción del producto...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price-tag">$99.99</span>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- Repetir más tarjetas de producto aquí -->
         </div>
     </div>
 
