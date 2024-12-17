@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Producto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vista_producto.css">
+</head>
+<body>
+    <!-- Barra lateral fija -->
+    <div class="sidebar">
+        <button class="btn sidebar-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+            <i class="bi bi-list"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Home" onclick="window.location.href='home.html'">
+            <i class="bi bi-house"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Categorías" onclick="window.location.href='categorias.html'">
+            <i class="bi bi-grid"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Guardados" onclick="window.location.href='guardados.html'">
+            <i class="bi bi-bookmark"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Lista de compras" onclick="window.location.href='listaDeCompras.html'">
+            <i class="bi bi-cart"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Reportar un problema" id="btnReportar" style="position: absolute; bottom: 60px;">
+            <i class="bi bi-exclamation-triangle"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Cerrar sesión" id="btnLogout" style="position: absolute; bottom: 10px;">
+            <i class="bi bi-box-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <div class="search-container">
+                <form class="d-flex" action="busqueda.html">
+                    <div class="input-group">
+                        <input class="form-control border-end-0" type="search" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Columna izquierda: Imagen del producto -->
+                <div class="col-md-4 d-flex">
+                    <div class="product-image-container w-100">
+                        <img src="../img/Aceite-maravilla-900-ml.webp" alt="Producto" class="img-fluid product-image">
+                    </div>
+                </div>
+
+                <!-- Columna central: Detalles del producto -->
+                <div class="col-md-4 d-flex flex-column">
+                    <!-- Cuadro superior: Nombre del producto (20% del espacio) -->
+                    <div class="product-title-box mb-4 p-3" style="height: 20%;">
+                        <h1 class="product-title" id="productTitle"></h1>
+                    </div>
+                    
+                    <!-- Cuadros de rango de precios (50% del espacio) -->
+                    <div class="price-boxes-container d-flex flex-column mb-4" style="height: 50%;">
+                        <!-- Cuadro del título (mitad del contenedor) -->
+                        <div class="price-title-box p-3 mb-3" style="height: 45%;">
+                            <h4 class="m-0">Rango de Precios</h4>
+                        </div>
+                        <!-- Cuadro de los precios (mitad del contenedor) -->
+                        <div class="price-values-box p-3" style="height: 45%;">
+                            <div class="price-range">
+                                <span class="min-price text-success"></span>
+                                <span class="price-separator">-</span>
+                                <span class="max-price text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de acción (30% del espacio restante) -->
+                    <div class="action-buttons-box p-3 mt-auto" style="height: 30%;">
+                        <button class="btn btn-primary w-100 mb-2 py-2" id="btnAddToList">
+                            Añadir a lista de compra
+                        </button>
+                        <button class="btn btn-outline-primary w-100 py-2" id="btnSave">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Solo opiniones -->
+                <div class="col-md-4 d-flex">
+                    <div class="featured-opinions w-100 p-3">
+                        <h4 class="mb-3">Opiniones Destacadas</h4>
+                        <div class="opinions-container">
+                            <!-- Las opiniones se cargarán dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nueva fila para la lista de tiendas (ancho completo) -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="stores-section">
+                        <!-- Encabezado con título y filtros -->
+                        <div class="row mb-3">
+                            <!-- Título de la lista de tiendas -->
+                            <div class="col-8">
+                                <div class="stores-title-box">
+                                    <h4 class="m-0">Lista de Tiendas</h4>
+                                </div>
+                            </div>
+                            <!-- Filtros -->
+                            <div class="col-4">
+                                <div class="stores-filter-box">
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">Ordenar por:</span>
+                                        <select class="form-select">
+                                            <option>Precio: Menor a Mayor</option>
+                                            <option>Precio: Mayor a Menor</option>
+                                            <option>Distancia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lista de tiendas -->
+                        <div class="stores-container">
+                            <div class="store-list">
+                                <!-- Las tiendas se cargarán dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/vista_producto.js"></script>
+</body>
+</html>
+    

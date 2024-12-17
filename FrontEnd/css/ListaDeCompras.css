@@ -1,0 +1,19 @@
+/* Estilos específicos para listaDeCompras.html */
+.product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.unavailable-product {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.btn-cotizacion {
+    width: 120px;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}

@@ -1,0 +1,214 @@
+# Documentación
+
+1. Arquitectura General
+
+La aplicación está construida con una arquitectura cliente-servidor:
+
+-- Frontend: HTML, CSS, JavaScript vanilla
+-- Backend: Python con Flask
+-- Web Scraping: BeautifulSoup4 para extracción de datos
+
+```
+Estructura del Proyecto (Solo lo Funcional)
+├── FrontEnd/
+│   ├── css/
+│   ├── html/
+│   ├── js/
+│   └── img/
+└── Scrapper/
+    ├── scrapers/ 	#tratado como un paquete por scraperapp.py
+    ├── scraperapp.py
+    └── urls.py
+```
+
+2. Flujo de la Aplicación
+
+
+2.1 Inicio de la Aplicación
+
+1. El usuario accede a `index.html`
+2. Se redirige a `home.html` donde se muestran las tarjetas de productos
+3. El servidor Flask debe estar corriendo en `localhost:5000`
+
+```javascript
+// Flujo básico en home.js
+document.addEventListener('DOMContentLoaded', async () => {
+    await cargarProductos();  // Carga inicial de productos
+});
+```
+
+2.2 Carga de Productos
+
+1. Frontend hace una petición a `/api/productos`
+2. Backend consulta el diccionario `PRODUCT_URLS`
+3. Devuelve lista de productos con información básica
+
+```python
+@app.route('/api/productos')
+def obtener_productos():
+    productos = []
+    for nombre, datos in PRODUCT_URLS.items():
+        productos.append({
+            'id': datos['id'],
+            'nombre': nombre,
+            'imagen': datos['imagen'],
+            'descripcion': datos['descripcion']
+        })
+    return jsonify(productos)
+```
+
+2.3 Vista de Producto Individual
+
+Cuando un usuario hace clic en un producto:
+
+1. Se redirige a `vista_producto.html` con el ID del producto
+2. Frontend hace dos peticiones:
+   - `/api/productos` para información básica
+   - `/api/precios?id=X&include_urls=true` para precios y URLs
+
+```javascript
+async function loadProductInfo(productId) {
+    // 1. Obtener información básica del producto
+    const response = await fetch('http://localhost:5000/api/productos');
+    const productos = await response.json();
+    
+    // 2. Obtener precios y URLs
+    const preciosResponse = await fetch(`http://localhost:5000/api/precios?id=${productId}&include_urls=true`);
+    const data = await preciosResponse.json();
+}
+```
+
+3. Sistema de Scraping
+
+3.1 Arquitectura de Scrapers
+
+Utiliza el patrón Strategy con una clase base abstracta:
+
+```python
+class ScraperSupermercado(ABC):
+    def __init__(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0...'
+        }
+    
+    @abstractmethod
+    def obtener_precio(self, url):
+        pass
+```
+
+3.2 Implementaciones Específicas
+
+Cada supermercado tiene su propia implementación:
+
+- Jumbo: Busca por clase CSS y ID específico
+- Unimarc: Extrae de datos JSON-LD
+- Santa Isabel: Usa metadatos Open Graph
+- Trébol: Usa metadatos Open Graph
+
+3.3 Proceso de Scraping
+
+1. Se identifica la URL del producto
+2. Se hace request HTTP con headers apropiados
+3. Se parsea el HTML con BeautifulSoup
+4. Se extrae el precio según la estructura de cada sitio
+5. Se normaliza el precio a formato numérico
+
+4. Manejo de Datos
+
+4.1 Estructura de Productos
+
+```python
+
+PRODUCT_URLS = {
+    'Nombre del Producto': {
+        'id': 'string',
+        'imagen': 'path',
+        'descripcion': 'string',
+        'tienda1': 'url',
+        'tienda2': 'url',
+        // ...
+    }
+}
+```
+
+4.2 Formato de Respuestas API
+
+```python
+
+# GET /api/productos
+[{
+    "id": "1",
+    "nombre": "Producto",
+    "imagen": "ruta",
+    "descripcion": "texto"
+}, ...]
+
+# GET /api/precios?id=X&include_urls=true
+{
+    "precios": {
+        "tienda1": 1000,
+        "tienda2": 1200,
+        ...
+    },
+    "urls": {
+        "tienda1": "url1",
+        "tienda2": "url2",
+        ...
+    }
+}
+```
+
+5. Manejo de Errores
+
+5.1 Frontend
+
+- Validación de respuestas HTTP
+- Manejo de productos no encontrados
+- Formateo de precios inválidos
+
+5.2 Backend
+
+- Validación de parámetros de entrada
+- Manejo de errores de scraping
+- Respuestas HTTP apropiadas (404, 500, etc.)
+
+6. Consideraciones de Seguridad
+
+- CORS habilitado para desarrollo local
+- Headers de User-Agent para evitar bloqueos
+- Sanitización de IDs y URLs
+- Manejo seguro de respuestas JSON
+
+7. Mejoras Futuras Sugeridas
+
+1. Caché de precios para reducir scraping
+2. Sistema de autenticación
+3. Base de datos para historial de precios
+4. Notificaciones de cambios de precio
+5. Más tiendas y productos
+6. Sistema de reviews
+7. Lista de compras
+8. Comparación de precios históricos
+
+8. Dependencias Principales
+
+```txt
+flask==3.0.0
+flask-cors==4.0.0
+requests==2.31.0
+beautifulsoup4==4.12.2
+```
+
+## 9. Ejecución del Proyecto
+
+1. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+2. Iniciar servidor:
+```bash
+python Scrapper/scraperapp.py
+```
+
+3. Abrir `FrontEnd/html/index.html` o directamente el home.html en el navegador

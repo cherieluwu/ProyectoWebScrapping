@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Barra lateral fija -->
+    <div class="sidebar">
+        <button class="btn sidebar-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+            <i class="bi bi-list"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Inicio" onclick="window.location.href='home.html'">
+            <i class="bi bi-house"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Categorías" onclick="window.location.href='categorias.html'">
+            <i class="bi bi-grid"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Guardados" onclick="window.location.href='guardados.html'">
+            <i class="bi bi-bookmark"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Lista de compras" onclick="window.location.href='listaDeCompras.html'">
+            <i class="bi bi-cart"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Reportar un problema" style="position: absolute; bottom: 60px;">
+            <i class="bi bi-exclamation-triangle"></i>
+        </button>
+        <button class="btn sidebar-btn" title="Cerrar sesión" style="position: absolute; bottom: 10px;">
+            <i class="bi bi-box-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <div class="search-container">
+                <form class="d-flex" action="busqueda.html">
+                    <div class="input-group">
+                        <input class="form-control border-end-0" type="search" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menú lateral desplegable -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div>
+                <button class="btn btn-secondary w-100 mb-3" onclick="window.location.href='home.html'">Inicio</button>
+                <button class="btn btn-secondary w-100 mb-3" onclick="window.location.href='categorias.html'">Categorías</button>
+                <button class="btn btn-secondary w-100 mb-3" onclick="window.location.href='guardados.html'">Guardados</button>
+                <button class="btn btn-secondary w-100 mb-3" onclick="window.location.href='listaDeCompras.html'">Lista de compras</button>
+            </div>
+            <div>
+                <button class="btn btn-secondary w-100 mb-3">Reportar un problema</button>
+                <button class="btn btn-secondary w-100">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal - Lista de categorías -->
+    <div class="container" style="margin-left: 80px; margin-top: 80px;">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=alimentos" class="text-decoration-none text-dark">Alimentos</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=frutas" class="text-decoration-none">Frutas</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=verduras" class="text-decoration-none">Verduras</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=carnes" class="text-decoration-none">Carnes</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=lacteos" class="text-decoration-none">Lácteos</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=cereales" class="text-decoration-none">Cereales</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=bebidas" class="text-decoration-none text-dark">Bebidas</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=refrescos" class="text-decoration-none">Refrescos</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=jugos" class="text-decoration-none">Jugos</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=agua" class="text-decoration-none">Agua</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=alcoholicas" class="text-decoration-none">Bebidas Alcohólicas</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=energeticas" class="text-decoration-none">Bebidas Energéticas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=materiales" class="text-decoration-none text-dark">Materiales de Construcción</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=cemento" class="text-decoration-none">Cemento</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=arena" class="text-decoration-none">Arena</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=ladrillos" class="text-decoration-none">Ladrillos</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=herramientas" class="text-decoration-none">Herramientas</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=pinturas" class="text-decoration-none">Pinturas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=electronica" class="text-decoration-none text-dark">Electrónica</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=computadoras" class="text-decoration-none">Computadoras</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=celulares" class="text-decoration-none">Celulares</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=tablets" class="text-decoration-none">Tablets</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=accesorios" class="text-decoration-none">Accesorios</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=audio" class="text-decoration-none">Audio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=ropa" class="text-decoration-none text-dark">Ropa y Accesorios</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=ropa-hombre" class="text-decoration-none">Ropa de Hombre</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=ropa-mujer" class="text-decoration-none">Ropa de Mujer</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=calzado" class="text-decoration-none">Calzado</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=accesorios-moda" class="text-decoration-none">Accesorios de Moda</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=deportiva" class="text-decoration-none">Ropa Deportiva</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <a href="busqueda.html?categoria=hogar" class="text-decoration-none text-dark">Hogar</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="busqueda.html?categoria=muebles" class="text-decoration-none">Muebles</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=decoracion" class="text-decoration-none">Decoración</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=electrodomesticos" class="text-decoration-none">Electrodomésticos</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=jardin" class="text-decoration-none">Jardín</a></li>
+                            <li class="list-group-item"><a href="busqueda.html?categoria=cocina" class="text-decoration-none">Cocina</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+

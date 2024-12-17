@@ -1,0 +1,135 @@
+/* Estilos base */
+.product-image-container,
+.product-title-box,
+.price-title-box,
+.price-values-box,
+.action-buttons-box,
+.featured-opinions {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilos de la imagen */
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Estilos del rango de precios */
+.price-range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.price-separator {
+    color: #6c757d;
+}
+
+/* Ajustes de texto */
+.product-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Ajuste del contenido principal para evitar superposición con barras */
+.main-content {
+    margin-left: 60px;  /* Ancho de la barra lateral */
+    margin-top: 60px;   /* Altura de la barra superior */
+    padding: 20px;
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        margin-top: 56px; /* Altura típica de navbar en móviles */
+    }
+}
+
+/* Estilos para el contenedor principal de tiendas */
+.stores-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 1rem;
+}
+
+.store-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.store-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 1fr;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 1.25rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+}
+
+.store-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.store-name {
+    font-weight: 500;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.store-price {
+    color: #28a745;
+    font-weight: bold;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-reviews,
+.btn-store {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-reviews:hover,
+.btn-store:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilos para los botones de las tiendas */
+.btn-reviews {
+    background-color: white;
+    border: 1px solid #dee2e6;
+}
+
+.btn-reviews:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+}
+
+.btn-store {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+.btn-store:hover {
+    background-color: #0056b3;
+}

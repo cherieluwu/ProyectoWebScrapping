@@ -1,0 +1,90 @@
+/* Elementos específicos de home.html */
+.main-content {
+    margin-left: 60px;
+    margin-right: 250px;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.prices-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.store-price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.store-name {
+    font-weight: 500;
+}
+
+.price-tag {
+    color: #28a745;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.product-img {
+    height: 160px;
+    object-fit: contain;
+    padding: 0.75rem;
+}
+
+.card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.card-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+/* Ajustes para las tarjetas de productos */
+.product-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        margin-right: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
